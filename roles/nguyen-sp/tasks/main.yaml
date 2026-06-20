@@ -1,0 +1,20 @@
+---
+- name: Start nguyen-sp container
+  community.docker.docker_container:
+    name: nguyen-sp
+    image: "{{ nguyen_sp_image }}"
+    state: healthy
+    restart_policy: unless-stopped
+    networks:
+      - name: public
+    exposed_ports:
+      - 8080
+    env:
+      VIRTUAL_HOST: "sp.{{ domain_name }}"
+      VIRTUAL_PORT: "8080"
+      LETSENCRYPT_HOST: "sp.{{ domain_name }}"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
