@@ -9,6 +9,7 @@
     restart_policy: unless-stopped
     networks:
       - name: public
+      - name: private
     exposed_ports:
       - 8080
     env:
