@@ -1,0 +1,22 @@
+---
+- name: Start nguyen_sp postgres container
+  community.docker.docker_container:
+    name: nguyen_sp_postgres
+    image: postgres:18.3
+    state: healthy
+    restart_policy: unless-stopped
+    networks:
+      - name: private
+    exposed_ports:
+      - 5432
+    env:
+      POSTGRES_USER: "{{ vault_nguyen_sp_db_username }}"
+      POSTGRES_PASSWORD: "{{ vault_nguyen_sp_db_password }}"
+      POSTGRES_DB: "{{ vault_nguyen_sp_db_database_name }}"
+    volumes:
+      - "{{ nguyen_sp_db_data_location }}:/var/lib/postgresql"
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3

@@ -1,4 +1,6 @@
 ---
+- import_tasks: database.yaml
+
 - name: Start nguyen-sp container
   community.docker.docker_container:
     name: nguyen-sp
@@ -10,6 +12,9 @@
     exposed_ports:
       - 8080
     env:
+      DB_URL: "jdbc:postgresql://nguyen_sp_postgres:5432/{{ vault_nguyen_sp_db_database_name }}"
+      DB_USERNAME: "{{ vault_nguyen_sp_db_username }}"
+      DB_PASSWORD: "{{ vault_nguyen_sp_db_password }}"
       VIRTUAL_HOST: "sp.{{ domain_name }}"
       VIRTUAL_PORT: "8080"
       LETSENCRYPT_HOST: "sp.{{ domain_name }}"
