@@ -1,3 +1,3 @@
 ---
-nguyen_sp_image: ghcr.io/nguyennt1103/nguyen-sp:90cf95a651467690e11db4fd2c80d22191355962
+nguyen_sp_image: ghcr.io/nguyennt1103/nguyen-sp:66b95609ea380e22427c71ce8af81d5f18c360e5
 nguyen_sp_db_data_location: "{{ app_data_dir }}/nguyen_sp_postgres"
