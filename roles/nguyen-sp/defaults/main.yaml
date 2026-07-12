@@ -1,3 +1,0 @@
----
-nguyen_sp_image: ghcr.io/nguyennt1103/nguyen-sp:9a5cee9cdc1de0cd6455d891dd4d414519004748
-nguyen_sp_db_data_location: "{{ app_data_dir }}/nguyen_sp_postgres"

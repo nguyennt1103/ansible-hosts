@@ -4,5 +4,4 @@
 
   roles:
     - common
-    - nguyen-sp
     - webauthn-demo
