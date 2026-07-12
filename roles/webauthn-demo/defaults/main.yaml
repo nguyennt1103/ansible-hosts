@@ -1,2 +1,2 @@
 ---
-webauthn_demo_image: ghcr.io/nguyennt1103/webauthn-demo:latest
+webauthn_demo_image: ghcr.io/nguyennt1103/webauthn-demo:2ef8f10e82400142f2ffbdc240a673989ca6d90a
