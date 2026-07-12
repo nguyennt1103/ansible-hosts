@@ -1,0 +1,23 @@
+---
+- name: Start webauthn-demo container
+  community.docker.docker_container:
+    name: webauthn-demo
+    image: "{{ webauthn_demo_image }}"
+    state: healthy
+    restart_policy: unless-stopped
+    networks:
+      - name: public
+      - name: private
+    exposed_ports:
+      - 8080
+    env:
+      WEB_AUTHN_RP_ID: "webauthn.{{ domain_name }}"
+      WEB_AUTHN_ALLOWED_ORIGINS_0: "https://webauthn.{{ domain_name }}"
+      VIRTUAL_HOST: "webauthn.{{ domain_name }}"
+      VIRTUAL_PORT: "8080"
+      LETSENCRYPT_HOST: "webauthn.{{ domain_name }}"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
