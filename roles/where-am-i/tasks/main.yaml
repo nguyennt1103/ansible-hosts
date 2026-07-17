@@ -11,11 +11,11 @@
     exposed_ports:
       - 8080
     env:
-      WEB_AUTHN_RP_ID: "webauthn.{{ domain_name }}"
-      WEB_AUTHN_ALLOWED_ORIGINS_0: "https://webauthn.{{ domain_name }}"
-      VIRTUAL_HOST: "webauthn.{{ domain_name }}"
+      WEB_AUTHN_RP_ID: "whereami.{{ domain_name }}"
+      WEB_AUTHN_ALLOWED_ORIGINS_0: "https://whereami.{{ domain_name }}"
+      VIRTUAL_HOST: "whereami.{{ domain_name }}"
       VIRTUAL_PORT: "8080"
-      LETSENCRYPT_HOST: "webauthn.{{ domain_name }}"
+      LETSENCRYPT_HOST: "whereami.{{ domain_name }}"
     healthcheck:
       test: [ "CMD-SHELL", "curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1" ]
       interval: 10s
